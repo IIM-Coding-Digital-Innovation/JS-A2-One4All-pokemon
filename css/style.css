@@ -73,7 +73,6 @@ body .playground #playground__captured__toggle:checked ~ .playground__captured l
   top: 0;
   right: 0;
   width: 64px;
-  background-color: red;
   border-radius: 0rem 1rem 1rem 0rem;
 }
 body .playground #playground__captured__toggle:checked ~ .playground__captured label img {
