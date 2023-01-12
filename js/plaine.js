@@ -61,10 +61,13 @@ function reloadBall() {
 	let ballEl = document.createElement('img')
 	ballEl.classList = "ball"
 	ballEl.src = ballReturn.sprite
+	ballEl.draggable = true
 	/* events fired on the draggable target */
 	ballEl.addEventListener("drag", (event) => {
-		console.log(event);
-		ballEl.style.top = `${event.screenX}px`
+		// console.log(event);
+		// setTimeout(() => {
+		// 	ballEl.style.top = `${event.layerY}px`
+		// }, 50)
 	});
 
 	ballEl.addEventListener("dragstart", (event) => {
@@ -77,6 +80,24 @@ function reloadBall() {
 	ballEl.addEventListener("dragend", (event) => {
 		ballEl.style.top = 'auto'
 	});
+
+	// ballEl.addEventListener("mousedown", (event) => {
+	// 	isDragging = true
+	// 	ballEl.style.pointerEvents = "none"
+	// 	console.log(isDragging)
+	// });
+	// window.addEventListener("mouseup", (event) => {
+	// 	isDragging = false
+	// 	ballEl.style.pointerEvents = "auto"
+	// 	console.log(isDragging)
+	// });
+	// window.addEventListener('mousemove', function(event) {
+	// 	if (isDragging) {
+	// 		console.log('drag')
+	// 		ballEl.style.top = event.clientY - 48 + 'px';
+	// 		ballEl.style.left = event.clientX - 48 + 'px';
+	// 	}
+	//   });
 	playground.appendChild(ballEl)
 }
 
@@ -121,24 +142,11 @@ document.querySelector('#playground__shop__toggle').checked = false
 const addPokemonBtn = document.querySelector('.addPokemonBtn')
 addPokemonBtn.addEventListener('click', AddPokemonToPc)
 
-ball.addEventListener("drag", (event) => {
-	console.log(event);
-	ball.style.top = `${event.screenX}px`
-});
 
-ball.addEventListener("dragstart", (event) => {
-	// store a ref. on the dragged elem
-	dragged = event.target;
-	// make it half transparent
-	event.target.classList.add("dragging");
-});
-
-ball.addEventListener("dragend", (event) => {
-	ball.style.top = 'auto'
-});
-
+reloadBall()
 
 let dragged;
+let isDragging = false;
 
 
 
