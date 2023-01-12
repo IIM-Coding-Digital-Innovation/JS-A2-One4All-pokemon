@@ -80,18 +80,19 @@ body {
 			}
 
 			label {
-        &:last-of-type {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 64px;
-          border-radius: 0rem 1rem 1rem 0rem;
-        }
-        img {
-  				border-radius: 0rem 1rem 1rem 0rem;
-  			}
-  		}
-    }
+				&:last-of-type {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 64px;
+					border-radius: 0rem 1rem 1rem 0rem;
+				}
+
+				img {
+					border-radius: 0rem 1rem 1rem 0rem;
+				}
+			}
+		}
 
 		.playground__shop {
 			// overflow: hidden;
@@ -110,7 +111,7 @@ body {
 				background: #ffffff;
 				width: 0px;
 				overflow: hidden;
-        transform: translateY(-4.5rem);
+				transform: translateY(-4.5rem);
 
 
 				h2 {
@@ -131,7 +132,7 @@ body {
 				border-radius: 1rem;
 
 
-        
+
 				img {
 					pointer-events: none;
 					transition: 0.5s;
@@ -157,18 +158,19 @@ body {
 
 			label {
 
-        &:last-of-type {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 64px;
-          border-radius: 0rem 1rem 1rem 0rem;
-        }
-        img {
-  				border-radius: 0rem 1rem 1rem 0rem;
-  			}
-  		}
-    }
+				&:last-of-type {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 64px;
+					border-radius: 0rem 1rem 1rem 0rem;
+				}
+
+				img {
+					border-radius: 0rem 1rem 1rem 0rem;
+				}
+			}
+		}
 
 		.pokemon {
 			position: absolute;
@@ -198,10 +200,43 @@ body {
 		align-items: center;
 		justify-content: space-between;
 		padding: 0 20px 0 20px;
+		outline: none;
 
 		.qte-letter {
 			font-size: 50px;
 			font-family: 'Pokemon';
 		}
+	}
+}
+
+.lose{
+	color: red !important;
+	animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+}
+.wrong{
+	animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+}
+
+@keyframes shake {
+
+	10%,
+	90% {
+		transform: translate3d(-1px, 0, 0);
+	}
+
+	20%,
+	80% {
+		transform: translate3d(2px, 0, 0);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+
+	40%,
+	60% {
+		transform: translate3d(4px, 0, 0);
 	}
 }
