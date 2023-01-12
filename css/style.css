@@ -52,27 +52,34 @@ body .playground .playground__captured label img {
   background: #ffffff;
   border-radius: 1rem 1rem 1rem 1rem;
 }
-body .playground #playground__captured__toggle:checked + .playground__captured {
+body .playground #playground__captured__toggle:checked ~ .playground__captured {
   transition-delay: 0.25s;
 }
-body .playground #playground__captured__toggle:checked + .playground__captured .captured__pokemons {
+body .playground #playground__captured__toggle:checked ~ .playground__captured .captured__pokemons {
   padding: 1rem 2rem;
   width: 800px;
   transition-delay: 0.25s;
 }
-body .playground #playground__captured__toggle:checked + .playground__captured .captured__pokemons .captured__pokemons__ul {
+body .playground #playground__captured__toggle:checked ~ .playground__captured .captured__pokemons .captured__pokemons__ul {
   height: 400px;
   transition-delay: 0.25s;
 }
-body .playground #playground__captured__toggle:checked + .playground__captured label img {
+body .playground #playground__captured__toggle:checked ~ .playground__captured label:last-of-type {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 64px;
+  background-color: red;
+  border-radius: 0rem 1rem 1rem 0rem;
+}
+body .playground #playground__captured__toggle:checked ~ .playground__captured label img {
   border-radius: 0rem 1rem 1rem 0rem;
 }
 body .playground .playground__shop {
-  overflow: hidden;
   transition: 0.5s;
   transition-delay: 0;
   position: absolute;
-  top: 2rem;
+  top: 6.5rem;
   right: 2rem;
   display: flex;
 }
@@ -84,6 +91,7 @@ body .playground .playground__shop .shop__pokemons {
   background: #ffffff;
   width: 0px;
   overflow: hidden;
+  transform: translateY(-4.5rem);
 }
 body .playground .playground__shop .shop__pokemons h2 {
   height: 2rem;
@@ -103,19 +111,27 @@ body .playground .playground__shop label img {
   background: #ffffff;
   border-radius: 1rem 1rem 1rem 1rem;
 }
-body .playground #playground__shop__toggle:checked + .playground__shop {
+body .playground #playground__shop__toggle:checked ~ .playground__shop {
   transition-delay: 0.25s;
 }
-body .playground #playground__shop__toggle:checked + .playground__shop .shop__pokemons {
+body .playground #playground__shop__toggle:checked ~ .playground__shop .shop__pokemons {
   padding: 1rem 2rem;
   width: 800px;
   transition-delay: 0.25s;
 }
-body .playground #playground__shop__toggle:checked + .playground__shop .shop__pokemons .shop__pokemons__ul {
+body .playground #playground__shop__toggle:checked ~ .playground__shop .shop__pokemons .shop__pokemons__ul {
   height: 400px;
   transition-delay: 0.25s;
 }
-body .playground #playground__shop__toggle:checked + .playground__shop label img {
+body .playground #playground__shop__toggle:checked ~ .playground__shop label:last-of-type {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 64px;
+  background-color: red;
+  border-radius: 0rem 1rem 1rem 0rem;
+}
+body .playground #playground__shop__toggle:checked ~ .playground__shop label img {
   border-radius: 0rem 1rem 1rem 0rem;
 }
 body .playground .pokemon {
