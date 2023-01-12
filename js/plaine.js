@@ -34,6 +34,7 @@ const playground = document.querySelector('.playground')
 let ball = document.querySelector('.ball')
 
 document.querySelector('#playground__captured__toggle').checked = false
+document.querySelector('#playground__shop__toggle').checked = false
 
 // ball.addEventListener('drop', () => {
 //   console.log('drop ball')
