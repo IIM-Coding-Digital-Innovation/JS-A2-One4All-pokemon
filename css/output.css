@@ -18,7 +18,10 @@ body .playground {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: red;
+  background-color: greenyellow;
+}
+body .playground .btprintrandompokeonwindow {
+  background-color: blue;
 }
 body .playground .playground__captured {
   overflow: hidden;
@@ -191,4 +194,4 @@ body .qte .qte-letter {
   }
 }
 
-/*# sourceMappingURL=input.css.map */
+/*# sourceMappingURL=output.css.map */
