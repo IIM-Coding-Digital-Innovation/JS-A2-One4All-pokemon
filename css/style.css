@@ -131,7 +131,6 @@ body .playground #playground__shop__toggle:checked ~ .playground__shop label:las
   top: 0;
   right: 0;
   width: 64px;
-  background-color: red;
   border-radius: 0rem 1rem 1rem 0rem;
 }
 body .playground #playground__shop__toggle:checked ~ .playground__shop label img {
