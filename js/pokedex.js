@@ -33,11 +33,18 @@ printPokemon()
 
 async function printRandomPokemon() {
     const randomNum = Math.floor(Math.random() * 151) + 1;
-    console.log(randomNum);
     const url = `https://pokeapi.co/api/v2/pokemon/${randomNum}`
-    console.log(url);
     const pokeData = await getPokemon(url)
-    console.log(pokeData);
-    document.getElementById("randomPokemon").innerHTML = pokeData.name;
+    const randomPokemon = document.getElementById("randomPokemon");
+    
+    //data to print 
+    randomPokemon.innerHTML = pokeData.name;
+    document.getElementById("randomPokemonImg").src = pokeData.sprites.front_default;
+
+    //random position
+    document.getElementById("divrandomPokemon").style.position = "absolute";
+    document.getElementById("divrandomPokemon").style.left = Math.floor(Math.random() * (window.innerWidth - document.getElementById("divrandomPokemon").clientWidth)) + 'px';
+    document.getElementById("divrandomPokemon").style.top = Math.floor(Math.random() * (window.innerHeight - document.getElementById("divrandomPokemon").clientHeight)) + 'px';
 }
+
 printRandomPokemon()
