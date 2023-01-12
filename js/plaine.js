@@ -136,7 +136,6 @@ let user = {
 }
 
 document.querySelector('#playground__captured__toggle').checked = false
-document.querySelector('#playground__shop__toggle').checked = false
 
 // for dev only
 const addPokemonBtn = document.querySelector('.addPokemonBtn')
@@ -157,12 +156,13 @@ summonPokemon()
 
 // QTE
 
-function generateQTE(difficulty) {
+async function generateQTE(difficulty) {
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	let result = ''
 
 	let qte = document.createElement('div')
 	qte.classList.add('qte')
+	qte.tabIndex = 0
 
 	for (let i = 0; i < 8; i++) {
 		let letter = document.createElement('span')
@@ -188,38 +188,70 @@ function generateQTE(difficulty) {
 			break 
 		case 3:
 			timer = 2500
-			failsN = 0
 			break 
 	}
 
 	//console.log(result)
+	const qteInDom=document.querySelector('.qte')
 	const letters = document.querySelectorAll('.qte-letter')
 	let nLetter = 0
 	let fails = 0
-	window.addEventListener("keydown", e => {
-		console.log(e.key.toLowerCase(), result[nLetter].toLowerCase())
-		if (e.key.toLowerCase() === result[nLetter].toLowerCase()) {
-			console.log('oképourtoi')
-			letters[nLetter].style.color = "#3c5aa6"
-			nLetter++
-			console.log(nLetter, result.length)
-		}else{
-			fails++
-			console.log('non')
+	let sLose = 0
+	let sWin = 0
+	qteInDom.focus()
+	qteInDom.addEventListener("keydown", e => {
+		if(!letters[nLetter].classList.contains('lose')){
+			//console.log(e.key.toLowerCase(), result[nLetter].toLowerCase())
+			if (e.key.toLowerCase() === result[nLetter].toLowerCase()) {
+				//console.log('oképourtoi')
+				letters[nLetter].style.color = "#3c5aa6"
+				letters[nLetter].classList.remove('wrong')
+				nLetter++
+				//console.log(nLetter, result.length)
+			}else{
+				
+				letters[nLetter].classList.add('wrong')
+				fails++
+				//console.log('non')
+			}
+			if (nLetter == result.length){
+				//console.log('bienouèj')
+				sWin = new Date().getTime() / 1000
+				
+			}else if(fails-1 == failsN){
+				//console.log('dommagelartiste')
+				letters[nLetter].classList.remove('wrong')
+				letters.forEach(l=>{
+					l.classList.add("lose")
+				})
+				sLose = new Date().getTime() / 1000
+			}
 		}
-		if (nLetter == result.length){
-			console.log('bienouèj')
-			
-			return true
-		}else if(fails-1 == failsN){
-			console.log('dommagelartiste')
-			return false
-		}
+
 	});
-	setTimeout(()=>{
-		document.querySelector('.qte').remove()
-		console.log('temps écoulévh')
-		return false
-	}, timer)
+	return new Promise(resolve =>{
+		setTimeout(()=>{
+			document.querySelector('.qte').remove()
+			//console.log('temps écoulé')
+			resolve([new Date().getTime() / 1000, sLose, sWin])
+		}, timer)
+	})
+
 }
-//generateQTE(3)
+
+async function resultsQTE(diff){
+	const cs = await generateQTE(diff)
+	//console.log('----------------------------------------------------------------')
+	console.log(cs)
+	//console.log('----------------------------------------------------------------')
+	if(cs[1] != 0 || cs[2] == 0 || cs[2] > cs[0]){
+		console.log('LOSE')
+		return false
+	}else{
+		console.log('WIN')
+		return true
+	}
+}
+
+resultsQTE(1)
+
