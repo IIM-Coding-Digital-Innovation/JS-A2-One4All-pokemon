@@ -65,7 +65,7 @@ body {
 			}
 		}
 
-		#playground__captured__toggle:checked+.playground__captured {
+		#playground__captured__toggle:checked~.playground__captured {
 			transition-delay: 0.25s;
 
 			.captured__pokemons {
@@ -79,17 +79,26 @@ body {
 				}
 			}
 
-			label img {
-				border-radius: 0rem 1rem 1rem 0rem;
-			}
-		}
+			label {
+        &:last-of-type {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 64px;
+          border-radius: 0rem 1rem 1rem 0rem;
+        }
+        img {
+  				border-radius: 0rem 1rem 1rem 0rem;
+  			}
+  		}
+    }
 
 		.playground__shop {
-			overflow: hidden;
+			// overflow: hidden;
 			transition: 0.5s;
 			transition-delay: 0;
 			position: absolute;
-			top: 2rem;
+			top: 6.5rem;
 			right: 2rem;
 			display: flex;
 
@@ -101,6 +110,7 @@ body {
 				background: #ffffff;
 				width: 0px;
 				overflow: hidden;
+        transform: translateY(-4.5rem);
 
 
 				h2 {
@@ -120,6 +130,8 @@ body {
 				height: 64px;
 				border-radius: 1rem;
 
+
+        
 				img {
 					pointer-events: none;
 					transition: 0.5s;
@@ -129,7 +141,7 @@ body {
 			}
 		}
 
-		#playground__shop__toggle:checked+.playground__shop {
+		#playground__shop__toggle:checked~.playground__shop {
 			transition-delay: 0.25s;
 
 			.shop__pokemons {
@@ -143,10 +155,20 @@ body {
 				}
 			}
 
-			label img {
-				border-radius: 0rem 1rem 1rem 0rem;
-			}
-		}
+			label {
+
+        &:last-of-type {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 64px;
+          border-radius: 0rem 1rem 1rem 0rem;
+        }
+        img {
+  				border-radius: 0rem 1rem 1rem 0rem;
+  			}
+  		}
+    }
 
 		.pokemon {
 			position: absolute;
