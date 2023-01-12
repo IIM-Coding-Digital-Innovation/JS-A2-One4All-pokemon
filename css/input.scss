@@ -1,152 +1,185 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-  user-select: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+	user-select: none;
+}
+
+@font-face {
+	font-family: 'Pokemon';
+	src: url('/css/Pokemon-Hollow.ttf')
 }
 
 body {
-  min-height: 100vh;
-  .playground {
-    overflow: hidden;
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: greenyellow;
+	min-height: 100vh;
 
-    
-    .playground__captured {
-      overflow: hidden;
-      transition: 0.5s;
-      transition-delay: 0;
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      display: flex;
-      
-      .captured__pokemons {
-        transition: 0.5s;
-        transition-delay: 0;
-        padding: 1rem 0rem;
-        border-radius: 2rem 0rem 2rem 2rem;
-        background: #ffffff;
-        width: 0px;
-        overflow: hidden;
+	.playground {
+		overflow: hidden;
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+		background-color: greenyellow;
 
 
-        h2 {
-          height: 2rem;
-        }
+		.playground__captured {
+			overflow: hidden;
+			transition: 0.5s;
+			transition-delay: 0;
+			position: absolute;
+			top: 2rem;
+			right: 2rem;
+			display: flex;
 
-        .captured__pokemons__ul {
-          transition: 0.5s;
-          transition-delay: 0;
-          height: 0px;
-        }
-      }
+			.captured__pokemons {
+				transition: 0.5s;
+				transition-delay: 0;
+				padding: 1rem 0rem;
+				border-radius: 2rem 0rem 2rem 2rem;
+				background: #ffffff;
+				width: 0px;
+				overflow: hidden;
 
-      label {
-        height: 64px;
-        border-radius: 1rem;
-        img {
-          pointer-events: none;
-          transition: 0.5s;
-          background: #ffffff;
-          border-radius: 1rem 1rem 1rem 1rem;
-        }
-      }
-    }
-    
-    #playground__captured__toggle:checked + .playground__captured {
-      transition-delay: 0.25s;
-      .captured__pokemons {
-        padding: 1rem 2rem;
-        width: 800px;
-        transition-delay: 0.25s;
-        .captured__pokemons__ul {
-          height: 400px;
-          transition-delay: 0.25s;
-        }
-      }
-      label img {
-        border-radius: 0rem 1rem 1rem 0rem;
-      }
-    }
 
-    .playground__shop {
-      overflow: hidden;
-      transition: 0.5s;
-      transition-delay: 0;
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      display: flex;
-      
-      .shop__pokemons {
-        transition: 0.5s;
-        transition-delay: 0;
-        padding: 1rem 0rem;
-        border-radius: 2rem 0rem 2rem 2rem;
-        background: #ffffff;
-        width: 0px;
-        overflow: hidden;
-    
-    
-        h2 {
-          height: 2rem;
-        }
-    
-        .shop__pokemons__ul {
-          transition: 0.5s;
-          transition-delay: 0;
-          height: 0px;
-        }
-      }
-    
-      label {
-        // position: absolute;
-        // transform: translateY(4.5rem);
-        height: 64px;
-        border-radius: 1rem;
-        img {
-          pointer-events: none;
-          transition: 0.5s;
-          background: #ffffff;
-          border-radius: 1rem 1rem 1rem 1rem;
-        }
-      }
-    }
-    
-    #playground__shop__toggle:checked + .playground__shop {
-      transition-delay: 0.25s;
-      .shop__pokemons {
-        padding: 1rem 2rem;
-        width: 800px;
-        transition-delay: 0.25s;
-        .shop__pokemons__ul {
-          height: 400px;
-          transition-delay: 0.25s;
-        }
-      }
-      label img {
-        border-radius: 0rem 1rem 1rem 0rem;
-      }
-    }
-    
-    .pokemon {
-      position: absolute;
+				h2 {
+					height: 2rem;
+				}
 
-    }
+				.captured__pokemons__ul {
+					transition: 0.5s;
+					transition-delay: 0;
+					height: 0px;
+				}
+			}
 
-    .ball {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      height: 96px;
-      width: 96px;
-      transform-origin: center;
-      cursor: pointer;
-    }
-  }
+			label {
+				height: 64px;
+				border-radius: 1rem;
+
+				img {
+					pointer-events: none;
+					transition: 0.5s;
+					background: #ffffff;
+					border-radius: 1rem 1rem 1rem 1rem;
+				}
+			}
+		}
+
+		#playground__captured__toggle:checked+.playground__captured {
+			transition-delay: 0.25s;
+
+			.captured__pokemons {
+				padding: 1rem 2rem;
+				width: 800px;
+				transition-delay: 0.25s;
+
+				.captured__pokemons__ul {
+					height: 400px;
+					transition-delay: 0.25s;
+				}
+			}
+
+			label img {
+				border-radius: 0rem 1rem 1rem 0rem;
+			}
+		}
+
+		.playground__shop {
+			overflow: hidden;
+			transition: 0.5s;
+			transition-delay: 0;
+			position: absolute;
+			top: 2rem;
+			right: 2rem;
+			display: flex;
+
+			.shop__pokemons {
+				transition: 0.5s;
+				transition-delay: 0;
+				padding: 1rem 0rem;
+				border-radius: 2rem 0rem 2rem 2rem;
+				background: #ffffff;
+				width: 0px;
+				overflow: hidden;
+
+
+				h2 {
+					height: 2rem;
+				}
+
+				.shop__pokemons__ul {
+					transition: 0.5s;
+					transition-delay: 0;
+					height: 0px;
+				}
+			}
+
+			label {
+				// position: absolute;
+				// transform: translateY(4.5rem);
+				height: 64px;
+				border-radius: 1rem;
+
+				img {
+					pointer-events: none;
+					transition: 0.5s;
+					background: #ffffff;
+					border-radius: 1rem 1rem 1rem 1rem;
+				}
+			}
+		}
+
+		#playground__shop__toggle:checked+.playground__shop {
+			transition-delay: 0.25s;
+
+			.shop__pokemons {
+				padding: 1rem 2rem;
+				width: 800px;
+				transition-delay: 0.25s;
+
+				.shop__pokemons__ul {
+					height: 400px;
+					transition-delay: 0.25s;
+				}
+			}
+
+			label img {
+				border-radius: 0rem 1rem 1rem 0rem;
+			}
+		}
+
+		.pokemon {
+			position: absolute;
+
+		}
+
+		.ball {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			height: 96px;
+			width: 96px;
+			transform-origin: center;
+			cursor: pointer;
+		}
+	}
+
+	.qte {
+		position: fixed;
+		width: 500px;
+		height: 200px;
+		background-color: #ffcb05;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 20px 0 20px;
+
+		.qte-letter {
+			font-size: 50px;
+			font-family: 'Pokemon';
+		}
+	}
 }
