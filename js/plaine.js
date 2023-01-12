@@ -89,11 +89,27 @@ function generateQTE(difficulty) {
 	}
 	document.querySelector('body').appendChild(qte)
 
-	console.log(result)
-	let timerEnd = false
+	let timer = 0
+	let failsN = 0
+	switch (difficulty){
+		case 1:
+			timer = 5000
+			failsN = 5
+			break
+		case 2:
+			timer = 3500
+			failsN = 2
+			break 
+		case 3:
+			timer = 2500
+			failsN = 0
+			break 
+	}
+
+	//console.log(result)
 	const letters = document.querySelectorAll('.qte-letter')
 	let nLetter = 0
-	let fails = 0 
+	let fails = 0
 	window.addEventListener("keydown", e => {
 		console.log(e.key.toLowerCase(), result[nLetter].toLowerCase())
 		if (e.key.toLowerCase() === result[nLetter].toLowerCase()) {
@@ -107,16 +123,17 @@ function generateQTE(difficulty) {
 		}
 		if (nLetter == result.length){
 			console.log('bienouèj')
-			document.querySelector('.qte').remove()
 			
 			return true
-		}else if(fails == 5){
+		}else if(fails-1 == failsN){
 			console.log('dommagelartiste')
-			document.querySelector('.qte').remove()
 			return false
 		}
 	});
-	
+	setTimeout(()=>{
+		document.querySelector('.qte').remove()
+		console.log('temps écoulévh')
+		return false
+	}, timer)
 }
-
-//console.log(generateQTE())
+//generateQTE(3)
