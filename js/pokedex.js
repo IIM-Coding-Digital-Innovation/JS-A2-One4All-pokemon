@@ -29,3 +29,15 @@ async function printPokemon() {
 }
 
 printPokemon()
+
+
+async function printRandomPokemon() {
+    const randomNum = Math.floor(Math.random() * 151) + 1;
+    console.log(randomNum);
+    const url = `https://pokeapi.co/api/v2/pokemon/${randomNum}`
+    console.log(url);
+    const pokeData = await getPokemon(url)
+    console.log(pokeData);
+    document.getElementById("randomPokemon").innerHTML = pokeData.name;
+}
+printRandomPokemon()
