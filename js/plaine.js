@@ -30,24 +30,96 @@ function summonPokemon() {
 	playground.appendChild(pokemon)
 }
 
+function AddPokemonToPc() {
+	// for dev only
+	let pokemonId = '395'
+	let pokemonSellPriceBase = 100
+	// for dev only
+
+	let pokemonEl = document.createElement('img')
+	pokemonEl.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`
+
+	pokemonEl.addEventListener('click', () => {
+		user.balance += pokemonSellPriceBase
+		pokemonEl.remove()
+		console.log('user balance', user.balance)
+	})
+
+	pc.appendChild(pokemonEl)
+}
+
+function reloadBall() {
+	let unlockedBalls = user.upgrade.balls.filter(ball => ball.unlocked).reverse()
+	let ballsArray= []
+	unlockedBalls.forEach(ball => {
+		for(let i = 0; i < ball.lvl * 5; i++) ballsArray.push(ball)
+	})
+	console.log(ballsArray)
+	
+	
+	let ballReturn = ballsArray[getRandomInt(99)]
+	let ballEl = document.createElement('img')
+	ballEl.classList = "ball"
+	ballEl.src = ballReturn.sprite
+	/* events fired on the draggable target */
+	ballEl.addEventListener("drag", (event) => {
+		console.log(event);
+		ballEl.style.top = `${event.screenX}px`
+	});
+
+	ballEl.addEventListener("dragstart", (event) => {
+		// store a ref. on the dragged elem
+		dragged = event.target;
+		// make it half transparent
+		event.target.classList.add("dragging");
+	});
+
+	ballEl.addEventListener("dragend", (event) => {
+		ballEl.style.top = 'auto'
+	});
+	playground.appendChild(ballEl)
+}
+
 const playground = document.querySelector('.playground')
-let ball = document.querySelector('.ball')
+const pc = document.querySelector('.captured__pokemons__ul')
+const ball = document.querySelector('.ball')
+
+let user = {
+	balance: 0,
+	upgrade: {
+		balls: [
+			{
+				name: "PokeBall",
+				unlocked: true,
+				lvl: 20,
+				basePrice: 0,
+				sprite: '/assets/images/balls/PokeBall.png'
+			},
+			{
+				name: "SuperBall",
+				unlocked: true,
+				lvl: 10,
+				basePrice: 100,
+				sprite: '/assets/images/balls/SuperBall.png'
+			},
+			{
+				name: "HyperBall",
+				unlocked: true,
+				lvl: 2,
+				basePrice: 1000,
+				sprite: '/assets/images/balls/HyperBall.png'
+			},
+		]
+	},
+	pokemons: []
+}
 
 document.querySelector('#playground__captured__toggle').checked = false
 
-// ball.addEventListener('drop', () => {
-//   console.log('drop ball')
-// })
+// for dev only
+const addPokemonBtn = document.querySelector('.addPokemonBtn')
+addPokemonBtn.addEventListener('click', AddPokemonToPc)
 
-// setInterval(() => {
-//   summonPokemon()
-
-// },50)
-
-
-let dragged;
-
-/* events fired on the draggable target */
 ball.addEventListener("drag", (event) => {
 	console.log(event);
 	ball.style.top = `${event.screenX}px`
@@ -63,6 +135,11 @@ ball.addEventListener("dragstart", (event) => {
 ball.addEventListener("dragend", (event) => {
 	ball.style.top = 'auto'
 });
+
+
+let dragged;
+
+
 
 
 
