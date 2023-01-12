@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Poke Bircrave</title>
-	<link rel="stylesheet" href="./css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke Bircrave</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
-  
-  <div class="playground">
-    <input type="radio" id="playground__captured__toggle" style="display: none;" name="menus">
-    <input type="radio" id="playground__captured__detoggle" style="display: none;" name="menus">
-    <div class="playground__captured">
-      <div class="captured__pokemons">
-        <h2>pokemons captured</h2>
-        <div class="captured__pokemons__ul"></div>
-      </div>
-      <label for="playground__captured__toggle">
-        <img src="/assets/images/balls/Honor_Ball.png" alt="" height="64" draggable="true">
-      </label>
-      <label for="playground__captured__detoggle"></label>
+    
+    <div class="playground">
+        <input type="radio" id="playground__captured__toggle" style="display: none;" name="menus">
+        <input type="radio" id="playground__captured__detoggle" style="display: none;" name="menus">
+        <div class="playground__captured">
+            <div class="captured__pokemons">
+                <h2>pokemons captured</h2>
+                <div class="captured__pokemons__ul"></div>
+            </div>
+            <label for="playground__captured__toggle">
+                <img src="/assets/images/balls/Honor_Ball.png" alt="" height="64" draggable="true">
+            </label>
+            <label for="playground__captured__detoggle"></label>
+        </div>
+
+        <input type="radio" id="playground__shop__toggle" style="display: none;" name="menus">
+        <input type="radio" id="playground__shop__detoggle" style="display: none;" name="menus">
+        <div class="playground__shop">
+            <div class="shop__pokemons">
+                <h2>pokemons shop</h2>
+                <div class="shop__pokemons__ul"></div>
+            </div>
+            <label for="playground__shop__toggle">
+                <img src="/assets/images/balls/Total_Soin.png" alt="" height="64" draggable="true">
+            </label>
+            <label for="playground__shop__detoggle"></label>
+        </div>
+
+
+        <img src="/assets/images/balls/Miniature_Poké_Ball_HOME.png" alt="" class="ball" height="64" draggable="true">
+        <!-- <div class="ball" draggable="true"></div> -->
+        <!-- <div class="shop"></div> -->
     </div>
-
-    <input type="checkbox" id="playground__shop__toggle" style="display: none;">
-    <div class="playground__shop">
-      <div class="shop__pokemons">
-        <h2>pokemons shop</h2>
-        <div class="shop__pokemons__ul"></div>
-      </div>
-      <label for="playground__shop__toggle">
-        <img src="/assets/images/balls/Honor_Ball.png" alt="" height="64" draggable="true">
-      </label>
-    </div>
-
-
-		<img src="/assets/images/balls/Miniature_Poké_Ball_HOME.png" alt="" class="ball" height="64" draggable="true">
-		<!-- <div class="ball" draggable="true"></div> -->
-		<!-- <div class="shop"></div> -->
-	</div>
-	<script src="./js/pokedex.js"></script>
-	<script src="./js/plaine.js"></script>
+    <script src="./js/pokedex.js"></script>
+    <script src="./js/plaine.js"></script>
 </body>
-
 </html>
