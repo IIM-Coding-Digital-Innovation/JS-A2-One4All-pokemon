@@ -33,13 +33,17 @@ async function summonPokemon() {
 
 	pokemon.addEventListener('drop', (e) => {
 		pokemon.appendChild(dragged)
-		player.addToPc(pkmData)
-		setTimeout(() => {
-			reloadBall()
-			document.querySelector(`#${e.dataTransfer.getData('text/plain')}`).remove()
-			pokemon.remove()
-			summonPokemon()
-		}, 500)
+		resultsQTE(1).then(resp=>{
+			if(resp){
+				player.addToPc(pkmData)
+			}
+			setTimeout(() => {
+				reloadBall()
+				document.querySelector(`#${e.dataTransfer.getData('text/plain')}`).remove()
+				pokemon.remove()
+				summonPokemon()
+			}, 500)
+		})
 	})
 
 	playground.appendChild(pokemon)
@@ -257,17 +261,8 @@ async function generateQTE(difficulty) {
 
 async function resultsQTE(diff){
 	const cs = await generateQTE(diff)
-	//console.log('----------------------------------------------------------------')
 	console.log(cs)
-	//console.log('----------------------------------------------------------------')
-	if(cs[1] != 0 || cs[2] == 0 || cs[2] > cs[0]){
-		console.log('LOSE')
-		return false
-	}else{
-		console.log('WIN')
-		return true
-	}
+	return !(cs[1] != 0 || cs[2] == 0 || cs[2] > cs[0])
 }
 
-resultsQTE(1)
 
