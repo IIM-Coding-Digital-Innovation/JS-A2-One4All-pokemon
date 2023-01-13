@@ -17,10 +17,11 @@ async function printPokemon() {
         html +=
             `
             <div class="card">
-            <img src="${pokeData.sprites.front_default}" alt="${pokeData.name}">
+                <img src="${pokeData.sprites.front_default}" alt="${pokeData.name}">
+                <span>${pokeData.id}</span>
                 <h2>${pokeData.name}</h2>
-                <span>${pokeData.height}</span>
-                <span>${pokeData.weight}</span>
+                <span>Height ${pokeData.height}</span>
+                <span>Weight ${pokeData.weight}</span>
                 <div>${pokeData.types[0].type.name}</div>
             </div>
             `
@@ -43,7 +44,7 @@ async function printRandomPokemon() {
     const url = `https://pokeapi.co/api/v2/pokemon/${randomNum}`
     const pokeData = await getPokemon(url);
     const randomPokemon = document.getElementById("randomPokemon");
-
+    const randomShiny = Math.floor(Math.random() < 0.2);
     // Create new div foreach Pokemon
     const newPokemon = document.createElement('div');
     newPokemon.classList.add("pokemon-card");
@@ -52,11 +53,11 @@ async function printRandomPokemon() {
     // Add name to div
     const pokemonName = document.createElement('h2');
     pokemonName.innerHTML = pokeData.name;
-    newPokemon.appendChild(pokemonName);
+    randomShiny ? newPokemon.appendChild(pokemonName);
 
     // Add image 
     const pokemonImg = document.createElement('img');
-    pokemonImg.src = pokeData.sprites.front_default;
+    pokemonImg.src = pokeData.sprites.front_default : document.getElementById("randomPokemonImg").src = pokeData.sprites.front_shiny;
     newPokemon.appendChild(pokemonImg);
 
     //random position
