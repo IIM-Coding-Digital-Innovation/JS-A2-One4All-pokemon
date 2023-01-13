@@ -17,10 +17,11 @@ async function printPokemon() {
         html +=
             `
             <div class="card">
-            <img src="${pokeData.sprites.front_default}" alt="${pokeData.name}">
+                <img src="${pokeData.sprites.front_default}" alt="${pokeData.name}">
+                <span>${pokeData.id}</span>
                 <h2>${pokeData.name}</h2>
-                <span>${pokeData.height}</span>
-                <span>${pokeData.weight}</span>
+                <span>Height ${pokeData.height}</span>
+                <span>Weight ${pokeData.weight}</span>
                 <div>${pokeData.types[0].type.name}</div>
             </div>
             `
@@ -30,21 +31,35 @@ async function printPokemon() {
 
 // printPokemon()
 
-
 async function printRandomPokemon() {
     const randomNum = Math.floor(Math.random() * 151) + 1;
     const url = `https://pokeapi.co/api/v2/pokemon/${randomNum}`
-    const pokeData = await getPokemon(url)
+    const pokeData = await getPokemon(url);
     const randomPokemon = document.getElementById("randomPokemon");
 
-    //data to print 
-    randomPokemon.innerHTML = pokeData.name;
-    document.getElementById("randomPokemonImg").src = pokeData.sprites.front_default;
+    // Create new div foreach Pokemon
+    const newPokemon = document.createElement('div');
+    newPokemon.classList.add("pokemon-card");
+    randomPokemon.appendChild(newPokemon);
+
+    // Add name to div
+    const pokemonName = document.createElement('h2');
+    pokemonName.innerHTML = pokeData.name;
+    newPokemon.appendChild(pokemonName);
+
+    // Add image 
+    const pokemonImg = document.createElement('img');
+    if (Math.random() < 0.2) {
+        pokemonImg.src = pokeData.sprites.front_shiny;
+    }
+    else{
+        pokemonImg.src = pokeData.sprites.front_default;
+    }
+    newPokemon.appendChild(pokemonImg);
 
     //random position
-    document.getElementById("divrandomPokemon").style.position = "absolute";
-    document.getElementById("divrandomPokemon").style.left = Math.floor(Math.random() * (window.innerWidth - document.getElementById("divrandomPokemon").clientWidth)) + 'px';
-    document.getElementById("divrandomPokemon").style.top = Math.floor(Math.random() * (window.innerHeight - document.getElementById("divrandomPokemon").clientHeight)) + 'px';
+    newPokemon.style.position = "absolute";
+    newPokemon.style.left = Math.floor(Math.random() * (window.innerWidth - newPokemon.clientWidth)) + 'px';
+    newPokemon.style.top = Math.floor(Math.random() * (window.innerHeight - newPokemon.clientHeight)) + 'px';
 }
-
 document.querySelector('.btprintrandompokeonwindow').addEventListener('click', printRandomPokemon);

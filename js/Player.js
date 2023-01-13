@@ -3,7 +3,26 @@ class Player {
 		console.log(data)
 		this.id = data.id
 		this.createdTime = data.createdTime
-		this.fields = data.fields
+		// this.fields = JSON.parse(data.fields)
+		this.fields = {}
+		this.fields.password = data.fields.password
+		this.fields.username = data.fields.username
+		console.log(JSON.parse(data.fields.data))
+		let a = JSON.parse(data.fields.data)
+		this.fields.data = JSON.parse(JSON.stringify(JSON.parse(data.fields.data)))
+		console.log("CREATION PLAYER", this)
+	}
+
+	store(){
+		localStorage.setItem('user', JSON.stringify({
+			id: this.id,
+			createdTime: this.createdTime,
+			fields: {
+				password: this.fields.password,
+				username: this.fields.username,
+				data: this.fields.data = JSON.stringify(this.fields.data)
+			},
+		}))
 	}
 
 	updateUser() {
@@ -23,8 +42,9 @@ class Player {
 		})
 		.then(resp => resp.json())
 		.then(resp => {
-			this.data = JSON.parse(resp.fields.data)
-			localStorage.setItem('user', this)
+			this.fields = JSON.parse(resp.fields.data)
+			console.log(this)
+			this.store()
 		})
 	}
 

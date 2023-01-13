@@ -66,8 +66,9 @@ document.querySelector('.logs .register #register__register').addEventListener('
                 localStorage.setItem('username', username)
                 localStorage.setItem('password', password)
                 player = new Player(resp)
-                localStorage.setItem('user', JSON.stringify(player))
-                console.log(player)
+                player.store()
+                player = new Player(JSON.parse(localStorage.getItem('user')))
+
                 document.querySelector('.logs .register .error').textContent = "user created"
                 setTimeout(() => {
                     document.querySelector('.log-bg').style.display = "none"
@@ -94,7 +95,8 @@ document.querySelector('.logs .login #login__login').addEventListener('click', (
             localStorage.setItem('username', username)
             localStorage.setItem('password', password)
             player = new Player(resp.records[0])
-            localStorage.setItem('user', JSON.stringify(player))
+            player.store()
+            player = new Player(JSON.parse(localStorage.getItem('user')))
         }
     })
 })
