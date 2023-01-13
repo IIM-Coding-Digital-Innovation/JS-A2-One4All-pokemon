@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: sans-serif;
   user-select: none;
+  list-style: none;
 }
 
 @font-face {
@@ -13,15 +14,45 @@
 body {
   min-height: 100vh;
 }
+body .log-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+  place-items: center;
+}
+body .log-bg .logs {
+  padding: 2rem;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+body .log-bg .logs hr {
+  margin: 1rem 0;
+  width: 100%;
+}
+body .log-bg .logs .register, body .log-bg .logs .login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
 body .playground {
   overflow: hidden;
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: greenyellow;
+  background-image: url("/assets/bg_all.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 body .playground .btprintrandompokeonwindow {
-  background-color: blue;
+  background-color: grey;
+  position: static;
+  z-index: 10;
 }
 body .playground .playground__captured {
   overflow: hidden;
@@ -48,10 +79,13 @@ body .playground .playground__captured .captured__pokemons .captured__pokemons__
   transition: 0.5s;
   transition-delay: 0;
   height: 0px;
+  overflow-y: scroll;
 }
 body .playground .playground__captured label {
   height: 64px;
   border-radius: 1rem;
+  position: static;
+  z-index: 10;
 }
 body .playground .playground__captured label img {
   pointer-events: none;
@@ -139,6 +173,35 @@ body .playground #playground__shop__toggle:checked ~ .playground__shop label:las
 body .playground #playground__shop__toggle:checked ~ .playground__shop label img {
   border-radius: 0rem 1rem 1rem 0rem;
 }
+body .playground #pokedexBtn {
+  height: 64px;
+  width: 64px;
+  background: #ffffff;
+  position: absolute;
+  right: 2rem;
+  padding: 0.5rem;
+  top: 11rem;
+  border-radius: 1rem;
+}
+body .playground #pokedexBtn img {
+  object-fit: contain;
+  object-position: center;
+}
+body .playground .pokedex {
+  display: none;
+  padding: 2rem;
+  background: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body .playground .pokedex .pokdex__pokemons__ul {
+  width: 24rem;
+}
+body .playground #playground__pokedex__toggle:checked + .pokedex {
+  display: grid;
+}
 body .playground .pokemon {
   position: absolute;
 }
@@ -150,6 +213,7 @@ body .playground .ball {
   width: 96px;
   transform-origin: center;
   cursor: pointer;
+  z-index: 10;
 }
 body .qte {
   position: fixed;

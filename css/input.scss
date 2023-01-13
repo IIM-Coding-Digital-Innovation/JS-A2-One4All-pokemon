@@ -57,7 +57,16 @@ body {
 		background-size: cover;
 
 		.btprintrandompokeonwindow{
-			background-color: blue;
+			background-color: white;
+			position: absolute;
+			z-index: 10;
+			bottom: 0;
+			margin-bottom: 50px;
+			margin-left: 50%;
+			transform: translateX(-50%);
+			padding: 10px;
+			border-radius: 10px;
+			border: none;
 		}
 
 		.playground__captured {
@@ -94,6 +103,8 @@ body {
 			label {
 				height: 64px;
 				border-radius: 1rem;
+				position: static;
+				z-index: 10;
 
 				img {
 					pointer-events: none;
@@ -111,6 +122,8 @@ body {
 				padding: 1rem 2rem;
 				width: 800px;
 				transition-delay: 0.25s;
+				position: relative;
+				z-index: 10;
 
 				.captured__pokemons__ul {
 					height: 400px;
@@ -141,6 +154,7 @@ body {
 			top: 6.5rem;
 			right: 2rem;
 			display: flex;
+			z-index: 10;
 
 			.shop__pokemons {
 				transition: 0.5s;
@@ -151,6 +165,8 @@ body {
 				width: 0px;
 				overflow: hidden;
         		transform: translateY(-4.5rem);
+				position: relative;
+				z-index: 10;
 
 
 				h2 {
@@ -179,6 +195,10 @@ body {
 					border-radius: 1rem 1rem 1rem 1rem;
 				}
 			}
+		}
+		#playground__shop__toggle{
+			position: relative;
+			z-index: 10;
 		}
 
 		#playground__shop__toggle:checked~.playground__shop {
@@ -216,6 +236,7 @@ body {
 			width: 64px;
 			background: #ffffff;
 			position: absolute;
+			z-index: 10;
 			right: 2rem;
 			padding: 0.5rem;
 			top: 11rem;
@@ -260,6 +281,7 @@ body {
 			width: 96px;
 			transform-origin: center;
 			cursor: pointer;
+			z-index: 10;
 		}
 	}
 

@@ -50,7 +50,16 @@ body .playground {
   background-size: cover;
 }
 body .playground .btprintrandompokeonwindow {
-  background-color: blue;
+  background-color: white;
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  margin-bottom: 50px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
 }
 body .playground .playground__captured {
   overflow: hidden;
@@ -82,6 +91,8 @@ body .playground .playground__captured .captured__pokemons .captured__pokemons__
 body .playground .playground__captured label {
   height: 64px;
   border-radius: 1rem;
+  position: static;
+  z-index: 10;
 }
 body .playground .playground__captured label img {
   pointer-events: none;
@@ -96,6 +107,8 @@ body .playground #playground__captured__toggle:checked ~ .playground__captured .
   padding: 1rem 2rem;
   width: 800px;
   transition-delay: 0.25s;
+  position: relative;
+  z-index: 10;
 }
 body .playground #playground__captured__toggle:checked ~ .playground__captured .captured__pokemons .captured__pokemons__ul {
   height: 400px;
@@ -118,6 +131,7 @@ body .playground .playground__shop {
   top: 6.5rem;
   right: 2rem;
   display: flex;
+  z-index: 10;
 }
 body .playground .playground__shop .shop__pokemons {
   transition: 0.5s;
@@ -128,6 +142,8 @@ body .playground .playground__shop .shop__pokemons {
   width: 0px;
   overflow: hidden;
   transform: translateY(-4.5rem);
+  position: relative;
+  z-index: 10;
 }
 body .playground .playground__shop .shop__pokemons h2 {
   height: 2rem;
@@ -146,6 +162,10 @@ body .playground .playground__shop label img {
   transition: 0.5s;
   background: #ffffff;
   border-radius: 1rem 1rem 1rem 1rem;
+}
+body .playground #playground__shop__toggle {
+  position: relative;
+  z-index: 10;
 }
 body .playground #playground__shop__toggle:checked ~ .playground__shop {
   transition-delay: 0.25s;
@@ -174,6 +194,7 @@ body .playground #pokedexBtn {
   width: 64px;
   background: #ffffff;
   position: absolute;
+  z-index: 10;
   right: 2rem;
   padding: 0.5rem;
   top: 11rem;
@@ -209,6 +230,7 @@ body .playground .ball {
   width: 96px;
   transform-origin: center;
   cursor: pointer;
+  z-index: 10;
 }
 body .qte {
   position: fixed;
