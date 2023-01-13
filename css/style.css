@@ -226,6 +226,7 @@ body .playground #leaderboardBtn {
   width: 64px;
   background: #ffffff;
   position: absolute;
+  z-index: 10;
   right: 2rem;
   padding: 0.5rem;
   top: 15.5rem;
@@ -240,6 +241,7 @@ body .playground .leaderboard {
   padding: 2rem;
   background: #ffffff;
   position: absolute;
+  z-index: 10;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
