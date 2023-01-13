@@ -60,18 +60,21 @@ class Player {
 		this.store()
 	}
 
-	async addToPc(pokemonId) {
+	async addToPc(pkmData) {
 		console.log(this.fields.data.pokemons.pc)
-		this.fields.data.pokemons.pc.push(pokemonId)
+		this.fields.data.pokemons.pc.push(pkmData.id.toString())
 
-		// TODO plug l'api pokemon/ et seulement les imgs
 		// ps T'est en train de faire la verif pour le pokedx
+		if(!this.fields.data.pokemons.pokedex.find(pkm => pkm.id === pkmData.id.toString())) {
+			this.fields.data.pokemons.pokedex.push({id:pkmData.id.toString(),name:pkmData.name,url:pkmData.sprites.front_default})
+		}
 
 		await this.updateUser()
 		console.log(this)
 		this.fixFields()
 		console.log(this.fields.data.pokemons.pc)
 		this.updatePc()
+		this.updatePokedex()
 	}
 
 	async sell(pcIndex) {
@@ -95,5 +98,28 @@ class Player {
 			pc.appendChild(pokemonEl)
 		});
 
+	}
+
+	updatePokedex() {
+		while(pokedex.firstElementChild) pokedex.firstElementChild.remove()
+		this.fields.data.pokemons.pokedex.forEach(pkm => {
+			let li = document.createElement('li')
+			
+			let id = document.createElement('span')
+			id.textContent = pkm.id
+
+			let name = document.createElement('span')
+			name.textContent = pkm.name
+
+			let pp = document.createElement('img')
+			pp.src = pkm.url
+			pp.height = 48
+
+			li.appendChild(id)
+			li.appendChild(name)
+			li.appendChild(pp)
+
+			pokedex.appendChild(li)
+		})
 	}
 }

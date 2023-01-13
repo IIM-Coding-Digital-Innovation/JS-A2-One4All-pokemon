@@ -10,7 +10,7 @@ function uuidv4() {
   );
 }
 
-function summonPokemon() {
+async function summonPokemon() {
 	// let pokemon = document.createElement('img')
 	// pokemon.src = '/assets/images/placeholders/1.png'
 
@@ -18,6 +18,8 @@ function summonPokemon() {
 	pokemon.style.height = '96px'
 	pokemon.style.width = '96px'
 	let pokemonId = (getRandomInt(151) + 1).toString()
+	let data = await fetch('https://pokeapi.co/api/v2/pokemon/' + pokemonId)
+	let pkmData = await data.json()
 	pokemon.style.background = `url(\'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png\')`
 
 	pokemon.classList = 'pokemon'
@@ -31,7 +33,7 @@ function summonPokemon() {
 
 	pokemon.addEventListener('drop', (e) => {
 		pokemon.appendChild(dragged)
-		player.addToPc(pokemonId)
+		player.addToPc(pkmData)
 		setTimeout(() => {
 			reloadBall()
 			document.querySelector(`#${e.dataTransfer.getData('text/plain')}`).remove()
@@ -118,6 +120,7 @@ function reloadBall() {
 
 const playground = document.querySelector('.playground')
 const pc = document.querySelector('.captured__pokemons__ul')
+const pokedex = document.querySelector('.pokedex__pokemons__ul')
 const ball = document.querySelector('.ball')
 let player;
 
