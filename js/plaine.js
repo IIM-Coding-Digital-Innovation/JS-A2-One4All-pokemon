@@ -36,7 +36,8 @@ async function summonPokemon() {
 		player.addToPc(pkmData)
 		setTimeout(() => {
 			reloadBall()
-			document.querySelector(`#${e.dataTransfer.getData('text/plain')}`).remove()
+			console.log(e.dataTransfer)
+			document.querySelector(`#${dragId}`).remove()
 			pokemon.remove()
 			summonPokemon()
 		}, 500)
@@ -91,7 +92,8 @@ function reloadBall() {
 		dragged = event.target;
 		// make it half transparent
 		event.target.classList.add("dragging");
-		event.dataTransfer.setData('text/plain', ballEl.id)
+		// event.dataTransfer.setData('text/plain', ballEl.id)
+		dragId = ballEl.id
 	});
 
 	ballEl.addEventListener("dragend", (event) => {
@@ -123,6 +125,7 @@ const pc = document.querySelector('.captured__pokemons__ul')
 const pokedex = document.querySelector('.pokedex__pokemons__ul')
 const ball = document.querySelector('.ball')
 let player;
+let dragId;
 
 let user = {
 	balance: 0,
