@@ -45,7 +45,9 @@ body .playground {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: greenyellow;
+  background-image: url("/assets/bg_all.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 body .playground .btprintrandompokeonwindow {
   background-color: blue;
