@@ -31,20 +31,12 @@ async function printPokemon() {
 
 printPokemon()
 
-
-
-
-
-
-
-
-
 async function printRandomPokemon() {
     const randomNum = Math.floor(Math.random() * 151) + 1;
     const url = `https://pokeapi.co/api/v2/pokemon/${randomNum}`
     const pokeData = await getPokemon(url);
     const randomPokemon = document.getElementById("randomPokemon");
-    const randomShiny = Math.floor(Math.random() < 0.2);
+
     // Create new div foreach Pokemon
     const newPokemon = document.createElement('div');
     newPokemon.classList.add("pokemon-card");
@@ -53,11 +45,16 @@ async function printRandomPokemon() {
     // Add name to div
     const pokemonName = document.createElement('h2');
     pokemonName.innerHTML = pokeData.name;
-    randomShiny ? newPokemon.appendChild(pokemonName);
+    newPokemon.appendChild(pokemonName);
 
     // Add image 
     const pokemonImg = document.createElement('img');
-    pokemonImg.src = pokeData.sprites.front_default : document.getElementById("randomPokemonImg").src = pokeData.sprites.front_shiny;
+    if (Math.random() < 0.2) {
+        pokemonImg.src = pokeData.sprites.front_shiny;
+    }
+    else{
+        pokemonImg.src = pokeData.sprites.front_default;
+    }
     newPokemon.appendChild(pokemonImg);
 
     //random position
