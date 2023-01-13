@@ -1,18 +1,20 @@
 "use strict"
 
-if(!(localStorage.getItem('username') || localStorage.getItem('username'))) document.querySelector('.log-bg').style.display = "grid"
+if(!(localStorage.getItem('username') && localStorage.getItem('password') && localStorage.getItem('user'))) document.querySelector('.log-bg').style.display = "grid"
+else player = new Player(JSON.parse(localStorage.getItem('user')))
 
 document.querySelector('.logs .register #register__register').addEventListener('click', () => {
     let username = document.querySelector('#register__username').value
     let password = document.querySelector('#register__password').value
 
-    fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV?filterByFormula=SEARCH("${username}", {username})`, {
+    fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV?filterByFormula=IF({username} = "${username}", TRUE(), FALSE())`, {
         headers: {
             'Authorization': `Bearer keyw099gr1SCsTfU8`
         }
     })
     .then(resp => resp.json())
     .then(resp => {
+        console.log("ouesh", resp)
         if(resp.records.length > 0) {
             document.querySelector('.logs .register .error').textContent = "user already exist"
         } else {
@@ -50,7 +52,10 @@ document.querySelector('.logs .register #register__register').addEventListener('
                                     },
                                 ]
                             },
-                            pokemons: []
+                            pokemons: {
+                                pc: [],
+                                pokedex: []
+                            }
                         })
                     }
                 })
@@ -60,7 +65,9 @@ document.querySelector('.logs .register #register__register').addEventListener('
                 console.log(resp)
                 localStorage.setItem('username', username)
                 localStorage.setItem('password', password)
-                localStorage.setItem('user', JSON.stringify(resp))
+                player = new Player(resp)
+                localStorage.setItem('user', JSON.stringify(player))
+                console.log(player)
                 document.querySelector('.logs .register .error').textContent = "user created"
                 setTimeout(() => {
                     document.querySelector('.log-bg').style.display = "none"
@@ -74,7 +81,7 @@ document.querySelector('.logs .login #login__login').addEventListener('click', (
     let username = document.querySelector('#login__username').value
     let password = document.querySelector('#login__password').value
 
-    fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV?filterByFormula=AND(SEARCH("${username}", {username}), SEARCH("${password}", {password}))`, {
+    fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV?filterByFormula=AND(IF({username} = "${username}", TRUE(), FALSE()),IF({password} = "${password}", TRUE(), FALSE()))`, {
         headers: {
             'Authorization': `Bearer keyw099gr1SCsTfU8`
         }
@@ -82,11 +89,12 @@ document.querySelector('.logs .login #login__login').addEventListener('click', (
     .then(resp => resp.json())
     .then(resp => {
         if(resp.records.length === 0) {
-            document.querySelector('.logs .login .error').textContent = "Unknow user"
+            document.querySelector('.logs .login .error').textContent = "Unknow user or password"
         } else {
             localStorage.setItem('username', username)
             localStorage.setItem('password', password)
-            localStorage.setItem('user', JSON.stringify(resp.records[0]))
+            player = new Player(resp.records[0])
+            localStorage.setItem('user', JSON.stringify(player))
         }
     })
 })

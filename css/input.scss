@@ -13,6 +13,7 @@
 
 body {
 	min-height: 100vh;
+	
 
 	.log-bg {
 		position: fixed;
@@ -51,6 +52,9 @@ body {
 		height: 100vh;
 		background-color: greenyellow;
 
+		.btprintrandompokeonwindow{
+			background-color: blue;
+		}
 
 		.playground__captured {
 			overflow: hidden;

@@ -103,6 +103,7 @@ function reloadBall() {
 const playground = document.querySelector('.playground')
 const pc = document.querySelector('.captured__pokemons__ul')
 const ball = document.querySelector('.ball')
+let player;
 
 let user = {
 	balance: 0,
