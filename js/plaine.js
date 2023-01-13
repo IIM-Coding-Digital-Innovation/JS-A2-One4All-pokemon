@@ -137,14 +137,14 @@ let user = {
 			},
 			{
 				name: "SuperBall",
-				lvl: 0,
+				lvl: 8,
 				basePrice: 100,
 				sprite: '/assets/images/balls/SuperBall.png',
 				difficulty : 2
 			},
 			{
 				name: "HyperBall",
-				lvl: 2,
+				lvl: 6,
 				basePrice: 1000,
 				sprite: '/assets/images/balls/HyperBall.png',
 				difficulty : 1

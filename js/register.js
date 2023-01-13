@@ -3,8 +3,13 @@
 if(!(localStorage.getItem('username') && localStorage.getItem('password') && localStorage.getItem('user'))) document.querySelector('.log-bg').style.display = "grid"
 else {
     player = new Player(JSON.parse(localStorage.getItem('user')))
-    player.updatePokedex()
-    player.updatePc()
+    player.updateUser()
+    .then(resp => {
+        player.fixFields()
+        player.updatePokedex()
+        player.updatePc()
+        console.log(player.fields.data.upgrade.balls)
+    })
 }
 
 document.querySelector('.logs .register #register__register').addEventListener('click', () => {

@@ -252,6 +252,7 @@ body {
 			padding: 2rem;
 			background: #ffffff;
 			position: absolute;
+			z-index: 10;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
@@ -301,6 +302,7 @@ body {
 			width: 64px;
 			background: #ffffff;
 			position: absolute;
+			z-index: 10;
 			right: 2rem;
 			padding: 0.5rem;
 			top: 15.5rem;
@@ -316,15 +318,34 @@ body {
 			padding: 2rem;
 			background: #ffffff;
 			position: absolute;
+			z-index: 10;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
 			h2 {
-
+				text-align: center;
+				padding-bottom: 1rem;
 			}
 
 			.leaderboard__pokemons__ul {
 				width: 24rem;
+
+				li {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					padding: 1rem 0;
+
+					&>:nth-child(1) {
+						font-weight: bold;
+					}
+					&>:nth-child(1) {
+						
+					}
+					&>:nth-child(1) {
+						
+					}
+				}
 			}
 		}
 
