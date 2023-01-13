@@ -29,7 +29,10 @@ async function printPokemon() {
     document.getElementById('pokemonCard').innerHTML = html
 }
 
-//printPokemon()
+document.querySelector('.btnPokedexAll').addEventListener('click', (e)=> {
+    document.querySelector('#pokemonCard').classList.toggle('show')
+})
+printPokemon()
 
 async function printRandomPokemon() {
     const randomNum = Math.floor(Math.random() * 151) + 1
