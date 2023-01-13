@@ -36,19 +36,22 @@ document.querySelector('.logs .register #register__register').addEventListener('
                                         name: "PokeBall",
                                         lvl: 20,
                                         basePrice: 0,
-                                        sprite: '/assets/images/balls/PokeBall.png'
+                                        sprite: '/assets/images/balls/PokeBall.png',
+                                        difficulty : 3
                                     },
                                     {
                                         name: "SuperBall",
                                         lvl: 0,
                                         basePrice: 100,
-                                        sprite: '/assets/images/balls/SuperBall.png'
+                                        sprite: '/assets/images/balls/SuperBall.png',
+                                        difficulty : 2
                                     },
                                     {
                                         name: "HyperBall",
                                         lvl: 2,
                                         basePrice: 1000,
-                                        sprite: '/assets/images/balls/HyperBall.png'
+                                        sprite: '/assets/images/balls/HyperBall.png',
+                                        difficulty : 1
                                     },
                                 ]
                             },

@@ -33,7 +33,7 @@ async function summonPokemon() {
 
 	pokemon.addEventListener('drop', (e) => {
 		pokemon.appendChild(dragged)
-		resultsQTE(1).then(resp => {
+		resultsQTE(ballDiff).then(resp => {
 			if (resp) {
 				player.addToPc(pkmData)
 			}
@@ -86,7 +86,7 @@ function reloadBall() {
 	ballEl.addEventListener("dragstart", (event) => {
 		// store a ref. on the dragged elem
 		dragged = event.target;
-		// make it half transparent
+		ballDiff = ballReturn.difficulty	// make it half transparent
 		event.target.classList.add("dragging");
 		// event.dataTransfer.setData('text/plain', ballEl.id)
 		dragId = ballEl.id
@@ -122,7 +122,7 @@ const pokedex = document.querySelector('.pokedex__pokemons__ul')
 const ball = document.querySelector('.ball')
 let player;
 let dragId;
-
+let ballDiff;
 let user = {
 	balance: 0,
 	upgrade: {
@@ -131,19 +131,22 @@ let user = {
 				name: "PokeBall",
 				lvl: 20,
 				basePrice: 0,
-				sprite: '/assets/images/balls/PokeBall.png'
+				sprite: '/assets/images/balls/PokeBall.png',
+				difficulty : 3
 			},
 			{
 				name: "SuperBall",
 				lvl: 0,
 				basePrice: 100,
-				sprite: '/assets/images/balls/SuperBall.png'
+				sprite: '/assets/images/balls/SuperBall.png',
+				difficulty : 2
 			},
 			{
 				name: "HyperBall",
 				lvl: 2,
 				basePrice: 1000,
-				sprite: '/assets/images/balls/HyperBall.png'
+				sprite: '/assets/images/balls/HyperBall.png',
+				difficulty : 1
 			},
 		]
 	},
