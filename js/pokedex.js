@@ -42,20 +42,29 @@ async function printRandomPokemon() {
     newPokemon.classList.add("pokemon-card");
     randomPokemon.appendChild(newPokemon);
 
-    // Add name to div
-    const pokemonName = document.createElement('h2');
-    pokemonName.innerHTML = pokeData.name;
-    newPokemon.appendChild(pokemonName);
-
+    let shiny;
     // Add image 
     const pokemonImg = document.createElement('img');
     if (Math.random() < 0.2) {
         pokemonImg.src = pokeData.sprites.front_shiny;
+        shiny = true
     }
     else{
         pokemonImg.src = pokeData.sprites.front_default;
+        shiny = false
     }
     newPokemon.appendChild(pokemonImg);
+
+    // Add name to div
+    const pokemonName = document.createElement('h2');
+    if (shiny) {
+        pokemonName.innerHTML = pokeData.name + " (Shiny)";
+    }
+    else{
+        pokemonName.innerHTML = pokeData.name;
+    }
+    newPokemon.appendChild(pokemonName);
+
 
     //random position
     newPokemon.style.position = "absolute";
