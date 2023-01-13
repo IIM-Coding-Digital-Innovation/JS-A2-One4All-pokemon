@@ -63,6 +63,10 @@ class Player {
 	async addToPc(pokemonId) {
 		console.log(this.fields.data.pokemons.pc)
 		this.fields.data.pokemons.pc.push(pokemonId)
+
+		// TODO plug l'api pokemon/ et seulement les imgs
+		// ps T'est en train de faire la verif pour le pokedx
+
 		await this.updateUser()
 		console.log(this)
 		this.fixFields()

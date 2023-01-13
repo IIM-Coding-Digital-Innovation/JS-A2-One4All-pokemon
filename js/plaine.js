@@ -149,10 +149,10 @@ let user = {
 }
 
 document.querySelector('#playground__captured__toggle').checked = false
+document.querySelector('#playground__pokedex__toggle').checked = false
 
 // for dev only
 const addPokemonBtn = document.querySelector('.addPokemonBtn')
-addPokemonBtn.addEventListener('click', AddPokemonToPc)
 
 
 reloadBall()

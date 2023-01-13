@@ -207,6 +207,42 @@ body {
 			}
 		}
 
+		#pokedexBtn {
+			height: 64px;
+			width: 64px;
+			background: #ffffff;
+			position: absolute;
+			right: 2rem;
+			padding: 0.5rem;
+			top: 11rem;
+			border-radius: 1rem;
+			img {
+				object-fit: contain;
+				object-position: center;
+			}
+		}
+
+		.pokedex {
+			display: none;
+			padding: 2rem;
+			background: #ffffff;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			h2 {
+
+			}
+
+			.pokdex__pokemons__ul {
+				width: 24rem;
+			}
+		}
+
+		#playground__pokedex__toggle:checked + .pokedex {
+			display: grid;
+		}
+
 		.pokemon {
 			position: absolute;
 
