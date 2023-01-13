@@ -68,6 +68,7 @@ document.querySelector('.logs .register #register__register').addEventListener('
                 player = new Player(resp)
                 player.store()
                 player = new Player(JSON.parse(localStorage.getItem('user')))
+                player.setup()
 
                 document.querySelector('.logs .register .error').textContent = "user created"
                 setTimeout(() => {
@@ -97,6 +98,12 @@ document.querySelector('.logs .login #login__login').addEventListener('click', (
             player = new Player(resp.records[0])
             player.store()
             player = new Player(JSON.parse(localStorage.getItem('user')))
+            player.setup()
+
+            document.querySelector('.logs .login .error').textContent = "Connected"
+            setTimeout(() => {
+                document.querySelector('.log-bg').style.display = "none"
+            }, 1000)
         }
     })
 })

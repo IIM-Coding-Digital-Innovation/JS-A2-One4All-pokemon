@@ -46,6 +46,7 @@ function AddPokemonToPc() {
 	})
 
 	pc.appendChild(pokemonEl)
+	
 }
 
 function reloadBall() {

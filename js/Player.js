@@ -13,6 +13,14 @@ class Player {
 		console.log("CREATION PLAYER", this)
 	}
 
+	setup() {
+		this.updatePc()
+	}
+
+	fixFields() {
+		this.fields.data = JSON.parse(this.fields.data)
+	}
+
 	store(){
 		localStorage.setItem('user', JSON.stringify({
 			id: this.id,
@@ -25,8 +33,8 @@ class Player {
 		}))
 	}
 
-	updateUser() {
-		fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV/${this.id}`, {
+	async updateUser() {
+		let response = await fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV/${this.id}`, {
 			method: 'PUT',
 			headers: {
 				'Authorization': `Bearer keyw099gr1SCsTfU8`,
@@ -34,24 +42,45 @@ class Player {
 			},
 			body: JSON.stringify({
 				"fields": {
-					"username" : this.data.username,
-					"password" : this.data.password,
-					"data" : JSON.stringify(this.data),
+					"username" : this.fields.username,
+					"password" : this.fields.password,
+					"data" : JSON.stringify(this.fields.data),
 				}
 			})
 		})
-		.then(resp => resp.json())
-		.then(resp => {
-			this.fields = JSON.parse(resp.fields.data)
-			console.log(this)
-			this.store()
-		})
+		let data = await response.json()
+		// .then(resp => {
+		// 	this.fields.data = JSON.parse(resp.fields.data)
+		// 	console.log(this)
+		// 	this.store()
+		// })
+
+		this.fields.data = JSON.parse(data.fields.data)
+		console.log(this.fields.data)
+		this.store()
 	}
 
-	addToPc(pokemonId) {
-		console.log(this.data)
-		this.data.pokemons.pc.push(pokemonId)
-		this.updateUser()
-		console.log(this.data)
+	async addToPc(pokemonId) {
+		console.log(this.fields.data.pokemons.pc)
+		this.fields.data.pokemons.pc.push(pokemonId)
+		await this.updateUser()
+		console.log(this)
+		this.fixFields()
+		console.log(this.fields.data.pokemons.pc)
+		this.updatePc()
+	}
+	
+	updatePc() {
+		while(pc.firstElementChild) pc.firstElementChild.remove()
+		this.fields.data.pokemons.pc.forEach(pokemon => {
+			let pokemonEl = document.createElement('img')
+			pokemonEl.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`
+	
+			pokemonEl.addEventListener('click', () => {
+				console.log('user balance')
+			})
+			pc.appendChild(pokemonEl)
+		});
+
 	}
 }
