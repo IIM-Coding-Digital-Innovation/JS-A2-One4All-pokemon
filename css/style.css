@@ -244,8 +244,21 @@ body .playground .leaderboard {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+body .playground .leaderboard h2 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
 body .playground .leaderboard .leaderboard__pokemons__ul {
   width: 24rem;
+}
+body .playground .leaderboard .leaderboard__pokemons__ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+body .playground .leaderboard .leaderboard__pokemons__ul li > :nth-child(1) {
+  font-weight: bold;
 }
 body .playground #playground__leaderboard__toggle:checked + .leaderboard {
   display: grid;

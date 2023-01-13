@@ -294,11 +294,29 @@ body {
 			left: 50%;
 			transform: translate(-50%, -50%);
 			h2 {
-
+				text-align: center;
+				padding-bottom: 1rem;
 			}
 
 			.leaderboard__pokemons__ul {
 				width: 24rem;
+
+				li {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					padding: 1rem 0;
+
+					&>:nth-child(1) {
+						font-weight: bold;
+					}
+					&>:nth-child(1) {
+						
+					}
+					&>:nth-child(1) {
+						
+					}
+				}
 			}
 		}
 
