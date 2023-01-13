@@ -71,4 +71,4 @@ async function printRandomPokemon() {
     newPokemon.style.left = Math.floor(Math.random() * (window.innerWidth - newPokemon.clientWidth)) + 'px';
     newPokemon.style.top = Math.floor(Math.random() * (window.innerHeight - newPokemon.clientHeight)) + 'px';
 }
-document.querySelector('.btprintrandompokeonwindow').addEventListener('click', printRandomPokemon);
+document.querySelector('.btprintrandompokeonwindow').addEventListener('click', summonPokemon);
