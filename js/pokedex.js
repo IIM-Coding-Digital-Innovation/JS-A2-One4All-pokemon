@@ -29,7 +29,7 @@ async function printPokemon() {
     document.getElementById('pokemonCard').innerHTML = html
 }
 
-printPokemon()
+//printPokemon()
 
 async function printRandomPokemon() {
     const randomNum = Math.floor(Math.random() * 151) + 1
