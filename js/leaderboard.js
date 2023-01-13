@@ -21,6 +21,24 @@ fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV`, {
         }
 
         console.log(users)
-        let users = users.sort((a, b) => a - b)
     });
+    console.log(users[0].data.pokemons.pokedex.length)
+    console.log(users[1].data.pokemons.pokedex.length)
+    console.log(users[2].data.pokemons.pokedex.length)
+
+    console.log(users.sort((a, b) => a.data.pokemons.pokedex.length - b.data.pokemons.pokedex.length))
+    console.log(users)
+
+    users.forEach(user => {
+        let userEl = document.createElement('li')
+        let username = document.createElement('span')
+        username.textContent = user.name
+        let numberPkdx = document.createElement('span')
+        numberPkdx.textContent = user.data.pokemons.pokedex.length
+
+        userEl.appendChild(username)
+        userEl.appendChild(numberPkdx)
+        leaderboard.appendChild(userEl)
+        
+    })
 })

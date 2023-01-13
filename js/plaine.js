@@ -119,6 +119,7 @@ function reloadBall() {
 const playground = document.querySelector('.playground')
 const pc = document.querySelector('.captured__pokemons__ul')
 const pokedex = document.querySelector('.pokedex__pokemons__ul')
+const leaderboard = document.querySelector('.leaderboard__pokemons__ul')
 const ball = document.querySelector('.ball')
 let player;
 let dragId;
