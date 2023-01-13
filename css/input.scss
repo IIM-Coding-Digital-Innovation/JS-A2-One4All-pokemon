@@ -14,7 +14,7 @@
 
 body {
 	min-height: 100vh;
-	
+
 
 	.log-bg {
 		position: fixed;
@@ -51,7 +51,10 @@ body {
 		position: relative;
 		width: 100vw;
 		height: 100vh;
-		background-color: greenyellow;
+		//background-color: greenyellow;
+		background-image: url('/assets/bg_all.png');
+		background-repeat: no-repeat;
+		background-size: cover;
 
 		.btprintrandompokeonwindow{
 			background-color: blue;
