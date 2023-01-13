@@ -273,7 +273,6 @@ body {
 		justify-content: space-between;
 		padding: 0 20px 0 20px;
 		outline: none;
-
 		.qte-letter {
 			font-size: 50px;
 			font-family: 'Pokemon';
@@ -285,6 +284,7 @@ body {
 	color: red !important;
 	animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
 }
+
 .wrong{
 	animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
 }

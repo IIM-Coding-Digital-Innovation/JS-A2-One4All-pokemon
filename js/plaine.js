@@ -218,14 +218,14 @@ async function generateQTE(difficulty) {
 	let sWin = 0
 	qteInDom.focus()
 	qteInDom.addEventListener("keydown", e => {
-		if (!letters[nLetter].classList.contains('lose')) {
+		if (!letters[nLetter].classList.contains('lose') || !letters[nLetter].classList.contains('win')) {
 			//console.log(e.key.toLowerCase(), result[nLetter].toLowerCase())
 			if (e.key.toLowerCase() === result[nLetter].toLowerCase()) {
 				//console.log('oképourtoi')
 				letters[nLetter].style.color = "#3c5aa6"
 				letters[nLetter].classList.remove('wrong')
 				nLetter++
-				//console.log(nLetter, result.length)
+				
 			} else {
 
 				letters[nLetter].classList.add('wrong')
@@ -235,6 +235,9 @@ async function generateQTE(difficulty) {
 			if (nLetter == result.length) {
 				//console.log('bienouèj')
 				sWin = new Date().getTime() / 1000
+				letters.forEach(l => {
+					l.style.color = "rgb(14, 212, 14)"
+				})
 
 			} else if (fails - 1 == failsN) {
 				//console.log('dommagelartiste')
