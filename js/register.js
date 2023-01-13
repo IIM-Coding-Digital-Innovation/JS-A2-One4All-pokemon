@@ -4,6 +4,7 @@ if(!(localStorage.getItem('username') && localStorage.getItem('password') && loc
 else {
     player = new Player(JSON.parse(localStorage.getItem('user')))
     player.updatePokedex()
+    player.updatePc()
 }
 
 document.querySelector('.logs .register #register__register').addEventListener('click', () => {
