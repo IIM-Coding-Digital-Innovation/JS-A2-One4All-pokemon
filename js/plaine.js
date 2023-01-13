@@ -5,9 +5,9 @@ function getRandomInt(max) {
 }
 
 function uuidv4() {
-  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
-    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-  );
+	return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+		(c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+	);
 }
 
 async function summonPokemon() {
@@ -33,13 +33,13 @@ async function summonPokemon() {
 
 	pokemon.addEventListener('drop', (e) => {
 		pokemon.appendChild(dragged)
-		resultsQTE(1).then(resp=>{
-			if(resp){
+		resultsQTE(1).then(resp => {
+			if (resp) {
 				player.addToPc(pkmData)
 			}
 			setTimeout(() => {
 				reloadBall()
-				document.querySelector(`#${e.dataTransfer.getData('text/plain')}`).remove()
+				document.querySelector(`#${dragId}`).remove()
 				pokemon.remove()
 				summonPokemon()
 			}, 500)
@@ -65,37 +65,31 @@ function AddPokemonToPc() {
 	})
 
 	pc.appendChild(pokemonEl)
-	
+
 }
 
 function reloadBall() {
-	let ballsArray= []
+	let ballsArray = []
 	user.upgrade.balls.reverse().forEach(ball => {
-		for(let i = 0; i < ball.lvl * 5; i++) ballsArray.push(ball)
+		for (let i = 0; i < ball.lvl * 5; i++) ballsArray.push(ball)
 	})
 	console.log(ballsArray)
-	
-	
+
+
 	let ballReturn = ballsArray[getRandomInt(99)]
 	let ballEl = document.createElement('img')
 	ballEl.classList = "ball"
 	ballEl.src = ballReturn.sprite
 	ballEl.draggable = true
 	ballEl.id = 'A' + uuidv4()
-	/* events fired on the draggable target */
-	ballEl.addEventListener("drag", (event) => {
-		// console.log(event);
-		// setTimeout(() => {
-		// 	ballEl.style.top = `${event.layerY}px`
-		// }, 50)
-	});
 
 	ballEl.addEventListener("dragstart", (event) => {
 		// store a ref. on the dragged elem
 		dragged = event.target;
 		// make it half transparent
 		event.target.classList.add("dragging");
-		event.dataTransfer.setData('text/plain', ballEl.id)
+		// event.dataTransfer.setData('text/plain', ballEl.id)
+		dragId = ballEl.id
 	});
 
 	ballEl.addEventListener("dragend", (event) => {
@@ -127,6 +121,7 @@ const pc = document.querySelector('.captured__pokemons__ul')
 const pokedex = document.querySelector('.pokedex__pokemons__ul')
 const ball = document.querySelector('.ball')
 let player;
+let dragId;
 
 let user = {
 	balance: 0,
@@ -197,7 +192,7 @@ async function generateQTE(difficulty) {
 
 	let timer = 0
 	let failsN = 0
-	switch (difficulty){
+	switch (difficulty) {
 		case 1:
 			timer = 5000
 			failsN = 5
@@ -205,14 +200,14 @@ async function generateQTE(difficulty) {
 		case 2:
 			timer = 3500
 			failsN = 2
-			break 
+			break
 		case 3:
 			timer = 2500
-			break 
+			break
 	}
 
 	//console.log(result)
-	const qteInDom=document.querySelector('.qte')
+	const qteInDom = document.querySelector('.qte')
 	const letters = document.querySelectorAll('.qte-letter')
 	let nLetter = 0
 	let fails = 0
@@ -220,7 +215,7 @@ async function generateQTE(difficulty) {
 	let sWin = 0
 	qteInDom.focus()
 	qteInDom.addEventListener("keydown", e => {
-		if(!letters[nLetter].classList.contains('lose')){
+		if (!letters[nLetter].classList.contains('lose')) {
 			//console.log(e.key.toLowerCase(), result[nLetter].toLowerCase())
 			if (e.key.toLowerCase() === result[nLetter].toLowerCase()) {
 				//console.log('oképourtoi')
@@ -228,20 +223,20 @@ async function generateQTE(difficulty) {
 				letters[nLetter].classList.remove('wrong')
 				nLetter++
 				//console.log(nLetter, result.length)
-			}else{
-				
+			} else {
+
 				letters[nLetter].classList.add('wrong')
 				fails++
 				//console.log('non')
 			}
-			if (nLetter == result.length){
+			if (nLetter == result.length) {
 				//console.log('bienouèj')
 				sWin = new Date().getTime() / 1000
-				
-			}else if(fails-1 == failsN){
+
+			} else if (fails - 1 == failsN) {
 				//console.log('dommagelartiste')
 				letters[nLetter].classList.remove('wrong')
-				letters.forEach(l=>{
+				letters.forEach(l => {
 					l.classList.add("lose")
 				})
 				sLose = new Date().getTime() / 1000
@@ -249,8 +244,8 @@ async function generateQTE(difficulty) {
 		}
 
 	});
-	return new Promise(resolve =>{
-		setTimeout(()=>{
+	return new Promise(resolve => {
+		setTimeout(() => {
 			document.querySelector('.qte').remove()
 			//console.log('temps écoulé')
 			resolve([new Date().getTime() / 1000, sLose, sWin])
@@ -259,7 +254,7 @@ async function generateQTE(difficulty) {
 
 }
 
-async function resultsQTE(diff){
+async function resultsQTE(diff) {
 	const cs = await generateQTE(diff)
 	console.log(cs)
 	return !(cs[1] != 0 || cs[2] == 0 || cs[2] > cs[0])
