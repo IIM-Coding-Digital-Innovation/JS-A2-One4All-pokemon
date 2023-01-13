@@ -69,15 +69,24 @@ class Player {
 		console.log(this.fields.data.pokemons.pc)
 		this.updatePc()
 	}
+
+	async sell(pcIndex) {
+		this.fields.data.pokemons.pc.splice(pcIndex, 1)
+		this.fields.data.balance += 100
+		await this.updateUser()
+		this.fixFields()
+	}
 	
 	updatePc() {
 		while(pc.firstElementChild) pc.firstElementChild.remove()
-		this.fields.data.pokemons.pc.forEach(pokemon => {
+		this.fields.data.pokemons.pc.forEach((pokemon, index) => {
 			let pokemonEl = document.createElement('img')
 			pokemonEl.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png`
 	
-			pokemonEl.addEventListener('click', () => {
+			pokemonEl.addEventListener('click', async () => {
 				console.log('user balance')
+				await this.sell(index)
+				pokemonEl.remove()
 			})
 			pc.appendChild(pokemonEl)
 		});

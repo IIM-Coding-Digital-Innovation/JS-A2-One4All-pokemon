@@ -74,6 +74,7 @@ body .playground .playground__captured .captured__pokemons .captured__pokemons__
   transition: 0.5s;
   transition-delay: 0;
   height: 0px;
+  overflow-y: scroll;
 }
 body .playground .playground__captured label {
   height: 64px;
