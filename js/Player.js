@@ -96,7 +96,7 @@ class Player {
 				pokemonEl.remove()
 			})
 			pc.appendChild(pokemonEl)
-		});
+		})
 
 	}
 

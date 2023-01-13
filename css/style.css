@@ -212,6 +212,8 @@ body .playground .pokedex {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  height: 60vh;
+  overflow-y: scroll;
 }
 body .playground .pokedex .pokdex__pokemons__ul {
   width: 24rem;

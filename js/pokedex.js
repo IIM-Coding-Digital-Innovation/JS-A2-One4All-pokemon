@@ -29,46 +29,46 @@ async function printPokemon() {
     document.getElementById('pokemonCard').innerHTML = html
 }
 
-// printPokemon()
+//printPokemon()
 
 async function printRandomPokemon() {
-    const randomNum = Math.floor(Math.random() * 151) + 1;
+    const randomNum = Math.floor(Math.random() * 151) + 1
     const url = `https://pokeapi.co/api/v2/pokemon/${randomNum}`
-    const pokeData = await getPokemon(url);
-    const randomPokemon = document.getElementById("randomPokemon");
+    const pokeData = await getPokemon(url)
+    const randomPokemon = document.getElementById("randomPokemon")
 
     // Create new div foreach Pokemon
-    const newPokemon = document.createElement('div');
-    newPokemon.classList.add("pokemon-card");
-    randomPokemon.appendChild(newPokemon);
+    const newPokemon = document.createElement('div')
+    newPokemon.classList.add("pokemon-card")
+    randomPokemon.appendChild(newPokemon)
 
-    let shiny;
+    let shiny
     // Add image 
-    const pokemonImg = document.createElement('img');
+    const pokemonImg = document.createElement('img')
     if (Math.random() < 0.2) {
-        pokemonImg.src = pokeData.sprites.front_shiny;
+        pokemonImg.src = pokeData.sprites.front_shiny
         shiny = true
     }
     else{
-        pokemonImg.src = pokeData.sprites.front_default;
+        pokemonImg.src = pokeData.sprites.front_default
         shiny = false
     }
-    newPokemon.appendChild(pokemonImg);
+    newPokemon.appendChild(pokemonImg)
 
     // Add name to div
-    const pokemonName = document.createElement('h2');
+    const pokemonName = document.createElement('h2')
     if (shiny) {
-        pokemonName.innerHTML = pokeData.name + " (Shiny)";
+        pokemonName.innerHTML = pokeData.name + " (Shiny)"
     }
     else{
-        pokemonName.innerHTML = pokeData.name;
+        pokemonName.innerHTML = pokeData.name
     }
-    newPokemon.appendChild(pokemonName);
+    newPokemon.appendChild(pokemonName)
 
 
     //random position
-    newPokemon.style.position = "absolute";
-    newPokemon.style.left = Math.floor(Math.random() * (window.innerWidth - newPokemon.clientWidth)) + 'px';
-    newPokemon.style.top = Math.floor(Math.random() * (window.innerHeight - newPokemon.clientHeight)) + 'px';
+    newPokemon.style.position = "absolute"
+    newPokemon.style.left = Math.floor(Math.random() * (window.innerWidth - newPokemon.clientWidth)) + 'px'
+    newPokemon.style.top = Math.floor(Math.random() * (window.innerHeight - newPokemon.clientHeight)) + 'px'
 }
-document.querySelector('.btprintrandompokeonwindow').addEventListener('click', summonPokemon);
+document.querySelector('.btprintrandompokeonwindow').addEventListener('click', summonPokemon)
