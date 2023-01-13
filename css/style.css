@@ -303,7 +303,7 @@ body .playground .ball {
   width: 96px;
   transform-origin: center;
   cursor: pointer;
-  z-index: 10;
+  z-index: 8;
 }
 body .qte {
   position: fixed;
@@ -318,6 +318,7 @@ body .qte {
   justify-content: space-between;
   padding: 0 20px 0 20px;
   outline: none;
+  z-index: 11;
 }
 body .qte .qte-letter {
   font-size: 50px;
