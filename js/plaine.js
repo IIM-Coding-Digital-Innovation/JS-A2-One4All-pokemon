@@ -56,7 +56,7 @@ function AddPokemonToPc() {
 	// for dev only
 
 	let pokemonEl = document.createElement('img')
-	pokemonEl.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`
+	(Math.random() > 0.8) ? pokemonEl.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemonId}.png` : pokemonEl.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`
 
 	pokemonEl.addEventListener('click', () => {
 		user.balance += pokemonSellPriceBase
