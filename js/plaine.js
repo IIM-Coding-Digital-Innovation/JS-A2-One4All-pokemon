@@ -4,6 +4,12 @@ function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
 }
 
+function uuidv4() {
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+}
+
 function summonPokemon() {
 	// let pokemon = document.createElement('img')
 	// pokemon.src = '/assets/images/placeholders/1.png'
@@ -11,7 +17,8 @@ function summonPokemon() {
 	let pokemon = document.createElement('div')
 	pokemon.style.height = '96px'
 	pokemon.style.width = '96px'
-	pokemon.style.background = 'url(\'/assets/images/placeholders/1.png\')'
+	let pokemonId = (getRandomInt(151) + 1).toString()
+	pokemon.style.background = `url(\'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png\')`
 
 	pokemon.classList = 'pokemon'
 	pokemon.style.top = `${(getRandomInt(playground.clientHeight - 96) / playground.clientHeight) * 100}%`
@@ -22,9 +29,15 @@ function summonPokemon() {
 		event.preventDefault();
 	}, false);
 
-	pokemon.addEventListener('drop', () => {
-		console.log('pokemon captured')
+	pokemon.addEventListener('drop', (e) => {
 		pokemon.appendChild(dragged)
+		player.addToPc(pokemonId)
+		setTimeout(() => {
+			reloadBall()
+			document.querySelector(`#${e.dataTransfer.getData('text/plain')}`).remove()
+			pokemon.remove()
+			summonPokemon()
+		}, 500)
 	})
 
 	playground.appendChild(pokemon)
@@ -62,6 +75,7 @@ function reloadBall() {
 	ballEl.classList = "ball"
 	ballEl.src = ballReturn.sprite
 	ballEl.draggable = true
+	ballEl.id = 'A' + uuidv4()
 	/* events fired on the draggable target */
 	ballEl.addEventListener("drag", (event) => {
 		// console.log(event);
@@ -75,6 +89,7 @@ function reloadBall() {
 		dragged = event.target;
 		// make it half transparent
 		event.target.classList.add("dragging");
+		event.dataTransfer.setData('text/plain', ballEl.id)
 	});
 
 	ballEl.addEventListener("dragend", (event) => {
