@@ -20,7 +20,7 @@ async function summonPokemon() {
 	let pokemonId = (getRandomInt(151) + 1).toString()
 	let data = await fetch('https://pokeapi.co/api/v2/pokemon/' + pokemonId)
 	let pkmData = await data.json()
-	pokemon.style.background = `url(\'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png\')`
+	await (Math.random() > 0.8) ? pokemon.style.background = `url(\'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemonId}.png\')` : pokemon.style.background = `url(\'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png\')`
 
 	pokemon.classList = 'pokemon'
 	pokemon.style.top = `${(getRandomInt(playground.clientHeight - 96) / playground.clientHeight) * 100}%`
