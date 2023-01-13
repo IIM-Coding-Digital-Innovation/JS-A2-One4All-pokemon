@@ -42,7 +42,7 @@ async function printRandomPokemon() {
     newPokemon.classList.add("pokemon-card")
     randomPokemon.appendChild(newPokemon)
 
-    let shiny;
+    let shiny
     // Add image 
     const pokemonImg = document.createElement('img')
     if (Math.random() < 0.2) {
@@ -61,7 +61,7 @@ async function printRandomPokemon() {
         pokemonName.innerHTML = pokeData.name + " (Shiny)"
     }
     else{
-        pokemonName.innerHTML = pokeData.name;
+        pokemonName.innerHTML = pokeData.name
     }
     newPokemon.appendChild(pokemonName)
 
