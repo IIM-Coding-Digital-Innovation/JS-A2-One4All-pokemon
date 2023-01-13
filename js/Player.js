@@ -102,6 +102,7 @@ class Player {
 
 	updatePokedex() {
 		while(pokedex.firstElementChild) pokedex.firstElementChild.remove()
+		this.fields.data.pokemons.pokedex.sort((a, b) => parseInt(a.id) - parseInt(b.id))
 		this.fields.data.pokemons.pokedex.forEach(pkm => {
 			let li = document.createElement('li')
 			
