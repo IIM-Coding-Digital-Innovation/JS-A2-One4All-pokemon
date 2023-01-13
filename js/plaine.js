@@ -1,13 +1,13 @@
 "use strict"
 
 function getRandomInt(max) {
-	return Math.floor(Math.random() * max);
+	return Math.floor(Math.random() * max)
 }
 
 function uuidv4() {
 	return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
 		(c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
-	);
+	)
 }
 
 async function summonPokemon() {
@@ -28,8 +28,8 @@ async function summonPokemon() {
 
 	pokemon.addEventListener("dragover", (event) => {
 		// prevent default to allow drop
-		event.preventDefault();
-	}, false);
+		event.preventDefault()
+	}, false)
 
 	pokemon.addEventListener('drop', (e) => {
 		pokemon.appendChild(dragged)
@@ -85,34 +85,34 @@ function reloadBall() {
 
 	ballEl.addEventListener("dragstart", (event) => {
 		// store a ref. on the dragged elem
-		dragged = event.target;
+		dragged = event.target
 		ballDiff = ballReturn.difficulty	// make it half transparent
-		event.target.classList.add("dragging");
+		event.target.classList.add("dragging")
 		// event.dataTransfer.setData('text/plain', ballEl.id)
 		dragId = ballEl.id
-	});
+	})
 
 	ballEl.addEventListener("dragend", (event) => {
 		ballEl.style.top = 'auto'
-	});
+	})
 
 	// ballEl.addEventListener("mousedown", (event) => {
 	// 	isDragging = true
 	// 	ballEl.style.pointerEvents = "none"
 	// 	console.log(isDragging)
-	// });
+	// })
 	// window.addEventListener("mouseup", (event) => {
 	// 	isDragging = false
 	// 	ballEl.style.pointerEvents = "auto"
 	// 	console.log(isDragging)
-	// });
+	// })
 	// window.addEventListener('mousemove', function(event) {
 	// 	if (isDragging) {
 	// 		console.log('drag')
-	// 		ballEl.style.top = event.clientY - 48 + 'px';
-	// 		ballEl.style.left = event.clientX - 48 + 'px';
+	// 		ballEl.style.top = event.clientY - 48 + 'px'
+	// 		ballEl.style.left = event.clientX - 48 + 'px'
 	// 	}
-	//   });
+	//   })
 	playground.appendChild(ballEl)
 }
 
@@ -121,9 +121,9 @@ const pc = document.querySelector('.captured__pokemons__ul')
 const pokedex = document.querySelector('.pokedex__pokemons__ul')
 const leaderboard = document.querySelector('.leaderboard__pokemons__ul')
 const ball = document.querySelector('.ball')
-let player;
-let dragId;
-let ballDiff;
+let player
+let dragId
+let ballDiff
 let user = {
 	balance: 0,
 	upgrade: {
@@ -163,8 +163,8 @@ const addPokemonBtn = document.querySelector('.addPokemonBtn')
 
 reloadBall()
 
-let dragged;
-let isDragging = false;
+let dragged
+let isDragging = false
 
 
 
@@ -250,7 +250,7 @@ async function generateQTE(difficulty) {
 			}
 		}
 
-	});
+	})
 	return new Promise(resolve => {
 		setTimeout(() => {
 			document.querySelector('.qte').remove()
