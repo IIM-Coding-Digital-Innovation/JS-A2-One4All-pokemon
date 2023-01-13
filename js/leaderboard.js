@@ -13,8 +13,14 @@ fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV`, {
         try {
             user.name = record.fields.username
             user.data = JSON.parse(record.fields.data)
+            // let userEl = document.createElement('li')
+            users.push(user)
+            
         } catch(e) {
             console.log('ERRORRRRRRRRRRRRRRRRRRRRRRRRRR')
         }
+
+        console.log(users)
+        let users = users.sort((a, b) => a - b)
     });
 })
