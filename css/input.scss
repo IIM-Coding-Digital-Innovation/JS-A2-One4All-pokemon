@@ -268,6 +268,42 @@ body {
 			display: grid;
 		}
 
+		#leaderboardBtn {
+			height: 64px;
+			width: 64px;
+			background: #ffffff;
+			position: absolute;
+			right: 2rem;
+			padding: 0.5rem;
+			top: 15.5rem;
+			border-radius: 1rem;
+			img {
+				object-fit: contain;
+				object-position: center;
+			}
+		}
+
+		.leaderboard {
+			display: none;
+			padding: 2rem;
+			background: #ffffff;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			h2 {
+
+			}
+
+			.leaderboard__pokemons__ul {
+				width: 24rem;
+			}
+		}
+
+		#playground__leaderboard__toggle:checked + .leaderboard {
+			display: grid;
+		}
+
 		.pokemon {
 			position: absolute;
 
