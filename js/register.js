@@ -1,7 +1,11 @@
 "use strict"
 
 if(!(localStorage.getItem('username') && localStorage.getItem('password') && localStorage.getItem('user'))) document.querySelector('.log-bg').style.display = "grid"
-else player = new Player(JSON.parse(localStorage.getItem('user')))
+else {
+    player = new Player(JSON.parse(localStorage.getItem('user')))
+    player.updatePokedex()
+    player.updatePc()
+}
 
 document.querySelector('.logs .register #register__register').addEventListener('click', () => {
     let username = document.querySelector('#register__username').value

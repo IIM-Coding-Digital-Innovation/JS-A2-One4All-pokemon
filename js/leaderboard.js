@@ -21,57 +21,25 @@ fetch(`https://api.airtable.com/v0/app1m0A2sG5NrkwN9/tblbumoNEm0DncWNV`, {
         }
 
         console.log(users)
-        let users = users.sort((a, b) => a - b)
     });
+    console.log(users[0].data.pokemons.pokedex.length)
+    console.log(users[1].data.pokemons.pokedex.length)
+    console.log(users[2].data.pokemons.pokedex.length)
+
+    console.log(users.sort((a, b) => a.data.pokemons.pokedex.length - b.data.pokemons.pokedex.length))
+    console.log(users)
+
+    users.forEach(user => {
+        let userEl = document.createElement('li')
+        let username = document.createElement('span')
+        username.textContent = user.name
+        let numberPkdx = document.createElement('span')
+        numberPkdx.textContent = user.data.pokemons.pokedex.length
+
+        userEl.appendChild(username)
+        userEl.appendChild(numberPkdx)
+        leaderboard.appendChild(userEl)
+        
+    })
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let draggableElement = document.getElementsByClassName("ball");
-
-// Ajoutez un écouteur d'événement pour le début de la glissière
-draggableElement.addEventListener("mousedown", function(event) {
-  // Enregistrez les coordonnées de départ de la souris
-    var startX = event.clientX;
-    var startY = event.clientY;
-
-  // Ajoutez un écouteur d'événement pour le déplacement de la souris
-    document.addEventListener("mousemove", drag);
-
-  // Ajoutez un écouteur d'événement pour la fin de la glissière
-    document.addEventListener("mouseup", stopDrag);
-
-  // Définir la fonction de glissière
-    function drag(event) {
-        // Calculer la distance de déplacement de la souris
-        let deltaX = event.clientX - startX;
-        let deltaY = event.clientY - startY;
-
-        // Appliquez ces déplacements aux styles de positionnement de l'élément glissant
-        draggableElement.style.left = deltaX + "px";
-        draggableElement.style.top = deltaY + "px";
-    }
-
-  // Définir la fonction pour arrêter la glissière
-    function stopDrag() {
-    // Supprimez les écouteurs d'événement pour le déplacement de la souris et la fin de la glissière
-    document.removeEventListener("mousemove", drag);
-    document.removeEventListener("mouseup", stopDrag);
-  }
-});
