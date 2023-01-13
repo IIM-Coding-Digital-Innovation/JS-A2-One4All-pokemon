@@ -28,4 +28,4 @@ async function printPokemon() {
     document.getElementById('pokemonCard').innerHTML = html
 }
 
-printPokemon()
+// printPokemon()

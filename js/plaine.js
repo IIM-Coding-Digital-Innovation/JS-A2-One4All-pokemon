@@ -49,9 +49,8 @@ function AddPokemonToPc() {
 }
 
 function reloadBall() {
-	let unlockedBalls = user.upgrade.balls.filter(ball => ball.unlocked).reverse()
 	let ballsArray= []
-	unlockedBalls.forEach(ball => {
+	user.upgrade.balls.reverse().forEach(ball => {
 		for(let i = 0; i < ball.lvl * 5; i++) ballsArray.push(ball)
 	})
 	console.log(ballsArray)
@@ -111,21 +110,18 @@ let user = {
 		balls: [
 			{
 				name: "PokeBall",
-				unlocked: true,
 				lvl: 20,
 				basePrice: 0,
 				sprite: '/assets/images/balls/PokeBall.png'
 			},
 			{
 				name: "SuperBall",
-				unlocked: true,
-				lvl: 10,
+				lvl: 0,
 				basePrice: 100,
 				sprite: '/assets/images/balls/SuperBall.png'
 			},
 			{
 				name: "HyperBall",
-				unlocked: true,
 				lvl: 2,
 				basePrice: 1000,
 				sprite: '/assets/images/balls/HyperBall.png'

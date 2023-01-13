@@ -11,6 +11,38 @@
 
 <body>
 
+    <div class="log-bg">
+        <div class="logs">
+            <div class="register">
+                <h2>Register</h2>
+                <div>
+                    <label for="register__username"></label>
+                    <input type="text" name="username" id="register__username">
+                </div>
+                <div>
+                    <label for="register__password"></label>
+                    <input type="text" name="username" id="register__password">
+                </div>
+                <button id="register__register">Register</button>
+                <span class="error"></span>
+            </div>
+            <hr>
+            <div class="login">
+                <h2>Login</h2>
+                <div>
+                    <label for="login__username"></label>
+                    <input type="text" name="username" id="login__username">
+                </div>
+                <div>
+                    <label for="login__password"></label>
+                    <input type="text" name="username" id="login__password">
+                </div>
+                <button id="login__login">login</button>
+                <span class="error"></span>
+            </div>
+        </div>
+    </div>
+
     <div class="playground">
         <input type="radio" id="playground__captured__toggle" style="display: none;" name="menus">
         <input type="radio" id="playground__captured__detoggle" style="display: none;" name="menus">
@@ -30,7 +62,14 @@
         <div class="playground__shop">
             <div class="shop__pokemons">
                 <h2>pokemons shop</h2>
-                <div class="shop__pokemons__ul"></div>
+                <div class="shop__pokemons__ul">
+                    <div class="item item--SuperBall">
+                        <img src="" alt="">
+                    </div>
+                    <div class="item item--HyperBall">
+                        <img src="" alt="">
+                    </div>
+                </div>
             </div>
             <label for="playground__shop__toggle">
                 <img src="/assets/images/balls/Total_Soin.png" alt="" height="64" draggable="true">
@@ -47,6 +86,6 @@
     </div>
     <script src="./js/pokedex.js"></script>
     <script src="./js/plaine.js"></script>
+    <script src="./js/register.js"></script>
 </body>
-
 </html>

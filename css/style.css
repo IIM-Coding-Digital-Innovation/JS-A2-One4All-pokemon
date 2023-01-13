@@ -13,6 +13,32 @@
 body {
   min-height: 100vh;
 }
+body .log-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+  place-items: center;
+}
+body .log-bg .logs {
+  padding: 2rem;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+body .log-bg .logs hr {
+  margin: 1rem 0;
+  width: 100%;
+}
+body .log-bg .logs .register, body .log-bg .logs .login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
 body .playground {
   overflow: hidden;
   position: relative;

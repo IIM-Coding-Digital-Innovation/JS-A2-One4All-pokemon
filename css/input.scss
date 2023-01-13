@@ -14,6 +14,36 @@
 body {
 	min-height: 100vh;
 
+	.log-bg {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 1000;
+		display: none;
+		place-items: center;
+
+		.logs {
+			padding: 2rem;
+			background: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: column;
+
+			hr {
+				margin: 1rem 0;
+				width: 100%;
+			}
+
+			.register, .login {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: column;
+			}
+		}
+	}
+
 	.playground {
 		overflow: hidden;
 		position: relative;
